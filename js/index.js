@@ -7,7 +7,7 @@ let opStatus = false,
 
 display.textContent = '0'
 
-const writeDisplay = (value, el) => {
+const writeDisplay = (value) => {
     display.textContent === '0' || opStatus === true
         ? display.textContent = value
         : value === '.' && !display.textContent.includes('.')
@@ -52,12 +52,15 @@ const otherFunctions = (fn) => {
     }
 
     fn === 'clear'
-        ? display.textContent = '0'
+        ? (
+            display.textContent = '0',
+            opStatus = true
+        )
         : fn == 'del'
             ? display.textContent = display.textContent.substring(0, display.textContent.length-1)
             : calcular(n1, opType)
     
-    opStatus = true
+    
 }
 
 keys.addEventListener('click', (e) => {
